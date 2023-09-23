@@ -1,18 +1,20 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "../todos/pages/HomePage";
-import { AchievementPage } from "../todos/pages/AchievementPage";
-import { GoalPage } from "../todos/pages/GoalPage";
-import { LoginPage } from "../auth/pages/LoginPage";
+import { HomePage, AchievementPage, GoalPage } from "../todos";
+
+
+import { LoginPage } from "../auth";
+import { Navbar } from "../ui";
 
 export const AppRouter = () => {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/achievements" element={<AchievementPage />} />
         <Route path="/goals" element={<GoalPage />} />
-        <Route path="login" element={<LoginPage />}/>
-        <Route path="/" element={<Navigate to="/home" />}/>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
     </>
   );
