@@ -1,8 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { TodoContext } from "../../todos/context";
+import { useContext } from "react";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-
+  const { todos } = useContext(TodoContext);
   const onLogout = () => {
     navigate("/login", { replace: true });
   };
@@ -12,22 +14,43 @@ export const Navbar = () => {
       <nav className="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg focus:text-neutral-700 dark:bg-neutral-600 lg:py-4">
         <div className="flex w-full flex-wrap items-center justify-between px-3">
           <NavLink
-            className="ml-2 text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+            className="ml-2 text-2xl font-semibold text-neutral-800 dark:text-neutral-200"
             to="/"
           >
             ToDo
+            <div className="ml-2 inline-block">
+              <div className="flex items-center justify-center h-5 w-5 rounded-full bg-neutral-600">
+                <span className="text-white font-bold text-sm">
+                  {todos.length}
+                </span>
+              </div>
+            </div>
           </NavLink>
           <NavLink
             className={({ isActive }) => `${isActive ? "text-blue-500" : ""}`}
             to="/goals"
           >
             Goals
+            <div className="ml-2 inline-block">
+              <div className="flex items-center justify-center h-5 w-5 rounded-full bg-neutral-600">
+                <span className="text-white font-bold text-sm">
+                  {todos.filter((todo) => todo.doneAt === false).length}
+                </span>
+              </div>
+            </div>
           </NavLink>
           <NavLink
             className={({ isActive }) => `${isActive ? "text-blue-500" : ""}`}
             to="/achievements"
           >
             Achievements
+            <div className="ml-2 inline-block">
+              <div className="flex items-center justify-center h-5 w-5 rounded-full bg-green-600">
+                <span className="text-white font-bold text-sm">
+                  {todos.filter((todo) => todo.doneAt === true).length}
+                </span>
+              </div>
+            </div>
           </NavLink>
           <NavLink
             className={({ isActive }) => `${isActive ? "text-blue-500" : ""}`}
@@ -38,14 +61,13 @@ export const Navbar = () => {
           <div className="ml-5 flex w-[30%] items-center justify-between">
             <input
               type="search"
-              className="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+              className="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none "
               placeholder="Search"
               aria-label="Search"
               aria-describedby="button-addon2"
             />
-
             <span
-              className="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
+              className="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700"
               id="basic-addon2"
             >
               <svg
@@ -66,7 +88,7 @@ export const Navbar = () => {
             <span className="">Eduardo</span>
             <button
               type="button"
-              className="inline-block rounded bg-blue-500 px-6 pb-2 pt-2 mx-3 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              className="bg-blue-500 text-white font-bold mx-3 py-1 px-4 rounded"
               onClick={onLogout}
             >
               Logout
