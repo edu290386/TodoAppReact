@@ -15,7 +15,7 @@ export const Navbar = () => {
             className="ml-2 text-xl font-semibold text-neutral-800 dark:text-neutral-200"
             to="/"
           >
-            ToDo List
+            ToDo
           </NavLink>
           <NavLink
             className={({ isActive }) => `${isActive ? "text-blue-500" : ""}`}

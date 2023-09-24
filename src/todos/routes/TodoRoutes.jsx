@@ -11,7 +11,7 @@ export const TodoRoutes = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/achievements" element={<AchievementPage />} />
           <Route path="/goals" element={<GoalPage />} />
-          <Route path="/task" element={<TaskPage />} />
+          <Route path="/task/:taskIndex" element={<TaskPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
