@@ -1,9 +1,11 @@
+import { useContext } from "react";
+import { TodoContext } from "../context";
 import { useForm } from "../hooks/useForm";
 
-export const FormTask = (props) => {
+export const FormTask = () => {
   const { formState, onInputChange, onResetForm } = useForm();
   const { title } = formState;
-  const { onAddTask } = props;
+  const { onAddTask } = useContext(TodoContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
