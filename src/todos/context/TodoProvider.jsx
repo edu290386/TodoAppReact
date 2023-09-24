@@ -11,7 +11,8 @@ const TodoProvider = ({ children }) => {
   const toogleTask = ( id ) => {
     const newTodos = todos.map( todo => {
         if(todo.id === Number(id)) {
-            return {...todo, doneAt: !todo.doneAt}
+            const toogleDoneAt = todo.doneAt ? null : new Date();
+            return {...todo, doneAt:toogleDoneAt}
         }
         return todo;
     })

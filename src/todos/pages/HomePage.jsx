@@ -5,8 +5,6 @@ import { TodoContext } from "../context";
 export const HomePage = () => {
   const { todos } = useContext(TodoContext);
 
-
-
   return (
     <>
       <div className="flex flex-col justify-center align-center border-2 m-4 rounded-lg">

@@ -34,7 +34,7 @@ export const Navbar = () => {
             <div className="ml-2 inline-block">
               <div className="flex items-center justify-center h-5 w-5 rounded-full bg-neutral-600">
                 <span className="text-white font-bold text-sm">
-                  {todos.filter((todo) => todo.doneAt === false).length}
+                  {todos.filter((todo) => todo.doneAt === null).length}
                 </span>
               </div>
             </div>
@@ -47,21 +47,15 @@ export const Navbar = () => {
             <div className="ml-2 inline-block">
               <div className="flex items-center justify-center h-5 w-5 rounded-full bg-green-600">
                 <span className="text-white font-bold text-sm">
-                  {todos.filter((todo) => todo.doneAt === true).length}
+                  {todos.filter((todo) => todo.doneAt !== null).length}
                 </span>
               </div>
             </div>
           </NavLink>
-          <NavLink
-            className={({ isActive }) => `${isActive ? "text-blue-500" : ""}`}
-            to="/task"
-          >
-            Task
-          </NavLink>
           <div className="ml-5 flex w-[30%] items-center justify-between">
             <input
               type="search"
-              className="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none "
+              className="m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 px-3 py-[0.25rem] font-normal leading-[1.6] text-neutral-700 outline-none focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none"
               placeholder="Search"
               aria-label="Search"
               aria-describedby="button-addon2"

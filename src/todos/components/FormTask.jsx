@@ -14,7 +14,7 @@ export const FormTask = () => {
       id: new Date().getTime(),
       title,
       createdAt: new Date(),
-      doneAt: false,
+      doneAt: null,
     };
     onAddTask(newTask);
     onResetForm();
@@ -26,7 +26,7 @@ export const FormTask = () => {
         onChange={onInputChange}
         name="title"
         value={title || ""}
-        className="p-2 border-2 rounded w-96 "
+        className="m-0 block w-96 flex-auto rounded border border-solid border-neutral-300 px-3 py-[0.25rem] font-normal leading-[1.6] text-neutral-700 outline-none focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
         type="text"
         placeholder="Write task"
       />

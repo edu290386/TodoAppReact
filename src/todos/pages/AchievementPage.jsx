@@ -4,7 +4,7 @@ import { TodoList } from "../components";
 
 export const AchievementPage = () => {
   const { todos } = useContext(TodoContext);
-  const achieves = todos.filter((todo) => todo.doneAt === true);
+  const achieves = todos.filter((todo) => todo.doneAt);
 
   return (
     <>

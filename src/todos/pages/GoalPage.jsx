@@ -4,7 +4,8 @@ import { TodoList } from "../components";
 
 export const GoalPage = () => {
   const { todos } = useContext(TodoContext);
-  const goals = todos.filter((todo) => todo.doneAt === false);
+  const goals = todos.filter((todo) => todo.doneAt === null);
+
   return (
     <>
       {goals.length > 0 && (
