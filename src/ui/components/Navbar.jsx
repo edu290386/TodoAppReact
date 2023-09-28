@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { TodoContext } from "../../todos/context";
 import { useContext } from "react";
+import { useForm } from "../../todos/hooks/useForm";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -8,6 +9,11 @@ export const Navbar = () => {
   const onLogout = () => {
     navigate("/login", { replace: true });
   };
+
+  const { formState, onInputChange } = useForm();
+  const { search } = formState;
+  
+  const  searchTask = todos.filter(todo => todo.title.includes(search));
 
   return (
     <>
@@ -56,7 +62,10 @@ export const Navbar = () => {
             <input
               type="search"
               className="m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 px-3 py-[0.25rem] font-normal leading-[1.6] text-neutral-700 outline-none focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none"
-              placeholder="Search"
+              placeholder="Search task"
+              onChange={onInputChange}
+              name="search"
+              value={search || ""}
               aria-label="Search"
               aria-describedby="button-addon2"
             />
