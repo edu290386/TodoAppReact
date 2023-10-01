@@ -10,8 +10,8 @@ export const TaskPage = () => {
   );
 
   return (
-    <>
-      <div className="py-8 mx-auto flex flex-col gap-8 items-center justify-center w-[50%] border-solid border-2 rounded shadow-sm">
+    <div className="flex items-center h-[calc(100vh-100px)]">
+      <div className="p-8 pt-6 mx-auto flex flex-col gap-8 items-center justify-center  border-solid border-2 rounded shadow-sm">
         <h1 className="text-4xl font-extrabold capitalize">
           {detailTask?.title}
         </h1>
@@ -20,7 +20,7 @@ export const TaskPage = () => {
             <span>Created at:</span>&nbsp;&nbsp;
             <span className="text-base font-normal leading-tight text-gray-500 ">
               {JSON.stringify(
-                detailTask.createdAt.toLocaleDateString("en-US")
+                detailTask.createdAt.toLocaleString("en-US")
               ).replace(/["']/g, "")}
             </span>
           </li>
@@ -28,12 +28,12 @@ export const TaskPage = () => {
             <span>Done at:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span className="text-base font-normal leading-tight text-gray-500 ">
               {JSON.stringify(
-                detailTask?.doneAt?.toLocaleDateString("en-US")
+                detailTask?.doneAt?.toLocaleString("en-US")
               ).replace(/["']/g, "")}
             </span>
           </li>}
         </ul>
       </div>
-    </>
+    </div>
   );
 };

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { TodoContext } from "./TodoContext";
+import { useEffect } from "react";
 
 const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
+  const [searchTasks, setSearchTasks] = useState([]);
   
   const onAddTask = (task) => {
     setTodos([...todos, task]);
@@ -19,8 +21,13 @@ const TodoProvider = ({ children }) => {
     setTodos(newTodos)
   }
 
+  const searchTodos = ( search ) => {
+    const searchTodos = todos.filter((todo) => todo.title.includes(search))
+    setSearchTasks([...searchTasks, ...searchTodos ])
+  }
+  
   return (
-    <TodoContext.Provider value={{ todos, onAddTask, toogleTask }}>
+    <TodoContext.Provider value={{ todos, onAddTask, toogleTask, searchTodos, searchTasks }}>
       {children}
     </TodoContext.Provider>
   );

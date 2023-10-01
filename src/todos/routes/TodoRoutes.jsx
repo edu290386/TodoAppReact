@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Navbar } from "../../ui/components/Navbar";
+
 import { AchievementPage, GoalPage, HomePage, SearchPage, TaskPage } from "../pages";
+import { Navbar } from "../../ui";
 
 export const TodoRoutes = () => {
   return (
