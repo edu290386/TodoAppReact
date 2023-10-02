@@ -2,7 +2,7 @@ import { TodoCard } from "./TodoCard";
 
 export const TodoList = (props) => {
   const { todos } = props;
-
+console.log(todos)
   return (
     <>
       <div className="flex flex-col mb-4">

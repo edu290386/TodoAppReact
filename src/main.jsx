@@ -5,9 +5,9 @@ import { BrowserRouter } from "react-router-dom";
 import { TodoApp } from "./TodoApp";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+
     <BrowserRouter>
       <TodoApp />
     </BrowserRouter>
-  </React.StrictMode>
+
 );

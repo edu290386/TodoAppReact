@@ -4,6 +4,7 @@ import { TodoContext } from "../context";
 
 export const TodoCard = ({ todo, index }) => {
   const { toogleTask } = useContext(TodoContext);
+  
   const onToogleTask = (id) => {
     toogleTask(id);
   };
