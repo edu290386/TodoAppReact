@@ -5,12 +5,11 @@ import { useContext } from "react";
 export const SearchNavBar = () => {
   const { searchTodos } = useContext(TodoContext);
   const { search, onInputChange } = useForm({});
- 
 
   const searchTasks = (e) => {
     e.preventDefault();
+    if (search === "") return;
     searchTodos(search);
-
   };
 
   return (
