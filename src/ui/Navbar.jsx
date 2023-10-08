@@ -2,12 +2,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { TodoContext } from "../todos/context";
 import { useContext } from "react";
 import { SearchNavBar } from "./components";
+import { AuthContext } from "../auth";
 
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { todos } = useContext(TodoContext);
+  const { user, logout } = useContext(AuthContext);
   const onLogout = () => {
+    logout();
     navigate("/login", { replace: true });
   };
 
@@ -56,7 +59,7 @@ export const Navbar = () => {
           </NavLink>
           <SearchNavBar />
           <div>
-            <span className="">Eduardo</span>
+            <span className="">{user?.name}</span>
             <button
               type="button"
               className="bg-blue-500 text-white font-bold mx-3 py-1 px-4 rounded"
